@@ -4,7 +4,6 @@
    dont ask him how many layers deep the trainList goes, it hurts his brain.
  */
 
-import javax.imageio.stream.ImageInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +13,7 @@ class Main {
      static Pokemon yourPokemon;
      static Pokemon enemyPokemon;
      static ArrayList<Trainer> trainerList = new ArrayList<>();
+     //Trainer names is super stolen, got them off bard, so is pokemonNames, so is moveNames, so is damage, I kinda stole it all, wooopsies
      static String[] trainerNames = {
              "Ash Ketchum",
              "Misty",
@@ -86,6 +86,7 @@ class Main {
             110
     };
 
+    //Is main, runs at start, holds most of the story
      public static void main(String[] args) throws IOException {
          BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
          System.out.println("Welcome to The World of Pokemon!!");
@@ -123,6 +124,7 @@ class Main {
          }
      }
 
+     //Creates an arrayList of trainers, with random pokemon, random hp, and random moves.
      public static void createTrainers() {
          for (int i = 0; i < 10; i++) {
              int randomNum = (int) (Math.random() * 20);
@@ -141,11 +143,13 @@ class Main {
          }
      }
 
+     //Creates a new move, quick enough that I just didn't want to copy past a lot.
     private static Attack createMoves() {
         int randomNum = (int) (Math.random() * 20);
         return new Attack(moveNames[randomNum], damages[randomNum]);
     }
 
+    //A loop that lets you fight a pokemon, takes in a pokemon, and fights them, ends once you kill it.
     public static void fightPokemon(Pokemon pokemon) throws IOException {
          while (pokemon.getHP() > 0) {
              System.out.println("What attack will you do?");
