@@ -1,3 +1,9 @@
+/* This is completed by Ethan Elliott
+   He worked hard, it is very impressive
+   completed for AP CS, 2/1/2024
+   dont ask him how many layers deep the trainList goes, it hurts his brain.
+ */
+
 import javax.imageio.stream.ImageInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
