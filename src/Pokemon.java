@@ -1,8 +1,9 @@
+import java.util.ArrayList;
+
 public class Pokemon {
     private String name;
     private int HP;
-    private Attack attack1;
-    private Attack attack2;
+    private ArrayList<Attack> attacks = new ArrayList<>();
     public Pokemon(String name, int HP) {
         this.name = name;
         this.HP = HP;
@@ -14,27 +15,16 @@ public class Pokemon {
         return HP;
     }
     public void addAttack(Attack newAttack){
-        if (attack1 == null) {
-            attack1 = newAttack;
-        }
-        else if (attack2 == null)
-        {
-            attack2 = newAttack;
+        if (attacks.size() < 2) {
+            attacks.add(newAttack);
         }
     }
     public int useAttack(String attackName)
     {
-        if (attack1 != null)
-        {
-            if (attack1.getName().equals(attackName)) {
-                return attack1.getDamage();
-            }
-        }
-        else if (attack2 != null)
-        {
-            if (attack2.getName().equals(attackName))
+        for (Attack a: attacks) {
+            if (a.getName().equals(attackName))
             {
-                return attack2.getDamage();
+                return a.getDamage();
             }
         }
         return 0;
