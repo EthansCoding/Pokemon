@@ -29,6 +29,11 @@ public class Pokemon {
         }
         return 0;
     }
+
+    public ArrayList<Attack> getAttacks() {
+        return attacks;
+    }
+
     public void takeDamage(int damage)
     {
         HP-= damage;

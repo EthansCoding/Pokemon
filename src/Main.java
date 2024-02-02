@@ -105,6 +105,8 @@ class Main {
          System.out.println("OKAY, you are ready for your first pokemon BATTLE");
          System.out.println("You will be fighting a DRAGONITE");
          enemyPokemon = new Pokemon("DRAGONITE", 500);
+         enemyPokemon.addAttack(new Attack("Dragon Blast", 10));
+         enemyPokemon.addAttack(new Attack("Squirt Gun", 10));
          fightPokemon(enemyPokemon);
          System.out.println("HOORAY YOU HAVE WON THE BATTLE, GOOD JOB TRAINER, YOU'RE READY FOR THE BIG LEAGUES");
          System.out.println("Would you like to continue? y/n");
@@ -158,7 +160,22 @@ class Main {
              pokemon.takeDamage(yourPokemon.useAttack(attack));
              System.out.println("YOUR ATTACK HITS FOR: " + yourPokemon.useAttack(attack));
              System.out.println(pokemon.getName() + "'S HP IS NOW : " + pokemon.getHP());
-             System.out.println(pokemon.getName() + " STARES YOU DOWN MENACINGLY!!!!!");
+             if (pokemon.getHP() >= 0) {
+                 System.out.println(pokemon.getName() + " STARES YOU DOWN MENACINGLY!!!!!");
+                 int whichMove = (int) (Math.random() * 2);
+                 String move = pokemon.getAttacks().get(whichMove).getName();
+                 System.out.println(pokemon.getName() + " USES THE MOVE " + move);
+                 yourPokemon.takeDamage(pokemon.useAttack(move));
+                 System.out.println(yourPokemon.getName() + " has " + yourPokemon.getHP() + " HP!!");
+             }
+             else {
+                 System.out.println("You have killed " + pokemon.getName() + " they are very dead!!");
+             }
+             if (yourPokemon.getHP() <= 0)
+             {
+                 System.out.println("Your pokemon has fainted, YOU LOSE!!!");
+                 System.exit(0);
+             }
              // THIS IS WHERE I WILL ADD THEM FIGHTING BACK !!!!!! THIS IS IMPORTANT DO THIS TOMORROW YOU ABSOLUTE GOOSE OKAY YOU MONKEY BRAIN!!!
              System.out.println("This turn is over.");
              System.out.println("--------------------------------------------------");
